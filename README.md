@@ -42,13 +42,15 @@ pf.animal.search()
 Another way if you have issues with the above code snippet and using React
 
 ```js
-export const getAllPets = async () => {
-  const pf = new Client({
+import { Client } from "@petfinder/petfinder-js";
+
+const pf = new Client({
     apiKey: "my-api-key",
     secret: "my-api-secret",
   });
 
-  return (await pf.animal.search()).data;
+  const results = await pf.animal.search()
+  console.log(results.data.animals)
 };
 ```
 

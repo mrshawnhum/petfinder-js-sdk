@@ -39,6 +39,19 @@ pf.animal.search()
     });
 ```
 
+Another way if you have issues with the above code snippet and using React
+
+```js
+export const getAllPets = async () => {
+  const pf = new Client({
+    apiKey: "my-api-key",
+    secret: "my-api-secret",
+  });
+
+  return (await pf.animal.search()).data;
+};
+```
+
 ## Usage (Node/CommonJS)
 
 ```js
@@ -68,6 +81,21 @@ client.animal.search()
     .catch(function (error) {
         // Handle the error
     });
+```
+
+## If using primary_photo_cropped, some dogs or cats won't have images. I recommend adding a placeholder like below example if using React
+
+```jsx
+
+<img
+            src={
+            animal.primary_photo_cropped
+              ? animal.primary_photo_cropped.small
+              : "https://source.unsplash.com/1600x900/?pets"
+          }
+          alt=""
+        />
+
 ```
 
 ## Documentation
